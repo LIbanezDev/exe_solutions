@@ -21,6 +21,7 @@ existir enemigo con ese nombre, no hace nada.
 Pruebe todo lo anterior en la funci�n main(): Cree un par de enemigos, un h�roe, un juego, agregue enemigos y heroe al juego, use
 atacarEnemigo un par de veces y mediante couts verifique que la vida de los enemigos va bajando. */
 #include<iostream>
+#include<conio.h>
 using namespace std;
 class Entidad{
 	protected:
@@ -74,26 +75,23 @@ class Enemigo: public Heroe{	// Herencia de atributos vida, nombre y ataque.
 };
 class Juego{
 	private:
-		string nombre;
-		char d[50];
+		string name;
+		string d;
 		Enemigo enemigos[50];
 		Heroe heroe;
 	public:
-		Juego(string nombre, char d[50]){
-			this->nombre = nombre;
-			this->d[50] = d[50];
-		}
+
 		void setNombre(string nombre){
-			this->nombre = nombre;
+			this->name = nombre;
 		}
 		string getNombre(){
-			return nombre;
+			return name;
 		}
-		void setDescripcion(char des[50]){
-			this->d[50] = des[50];
+		void setDescripcion(string d){
+			this->d = d;
 		}
 		char getDescripcion(){
-			return d[50];
+			return d;
 		}
 		void addEnemigo(Enemigo *e){
 			for(int i = 0; i < 50; i++){
@@ -112,4 +110,10 @@ class Juego{
 
 int main(){
 	
+	
+	
+	
+	
+	getch();
+	return 0;
 }
