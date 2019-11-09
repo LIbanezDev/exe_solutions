@@ -59,7 +59,7 @@ class Heroe: public Entidad{		// Herencia de atributos vida y nombre.
 			return ataque;
 		}			
 };
-class Enemigo: public Heroe{	// Herencia de atributos vida, nombre y ataque.
+class Enemigo: public Heroe{	// Herencia de atributos vida, nombre y ataque
 	private: 
 		char descripcion[50];
 	public:
