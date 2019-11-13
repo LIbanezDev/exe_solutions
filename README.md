@@ -1,4 +1,4 @@
 # Ejercicios de Programacion
 
 
-Repositorio personal de ejercicios que he realizado y que me hayan llamado especialmente atención por su creatividad u complejidad. 
+Ejercicios interesantes que hayan representado un desafio, todos con su correspondiente enunciado y su solución en diversos lenguajes. 
