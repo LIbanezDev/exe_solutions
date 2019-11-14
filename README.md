@@ -1,2 +1,4 @@
-# Ejercicios Programacion
-Ejercicios resueltos u pendientes con su correspondiente enunciado
+# Ejercicios de Programacion
+
+
+Ejercicios interesantes que hayan representado un desafio, todos con su correspondiente enunciado y su solución en diversos lenguajes. 
