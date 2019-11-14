@@ -76,22 +76,25 @@ class Enemigo: public Heroe{	// Herencia de atributos vida, nombre y ataque
 class Juego{
 	private:
 		string name;
-		string d;
-		Enemigo enemigos[50];
-		Heroe heroe;
+		char d[30];
+		Enemigo *enemigos[50];
+		Heroe *heroe;
 	public:
-
+		Juego(string name, char d[30]){
+			this->name = name;
+			this->d[30] = d[30];
+		}
 		void setNombre(string nombre){
 			this->name = nombre;
 		}
 		string getNombre(){
 			return name;
 		}
-		void setDescripcion(string d){
-			this->d = d;
+		void setDescripcion(char d[30]){
+			this->d[30] = d[30];
 		}
 		char getDescripcion(){
-			return d;
+			return d[30];
 		}
 		void addEnemigo(Enemigo *e){
 			for(int i = 0; i < 50; i++){
@@ -105,10 +108,32 @@ class Juego{
 				}
 			}
 		}
+		void addHeroe(Heroe *h){
+			if(heroe == NULL){
+				heroe = h;
+			}else{
+				cout<<"Ya hay un heroe en el juego!"<<endl;
+			}
+			
+		}
+		void atacarEnemigo(string nombreEnemigo){
+			for(int i = 0; i < 50; i++){
+				if(enemigos[i]->getNombre() == nombreEnemigo){
+					if(heroe != NULL){
+					cout<<"El heroe a atacado al enemigo: "<<nombreEnemigo<<"!!"<<endl;
+					enemigos[i]->setVida(enemigos[i]->getVida() - heroe->getAtaque());
+					cout<<"La vida del enemigo quedo en "<<enemigos[i]->getVida()<<endl;
+					}else{
+						break;
+					}
+				}
+			}
+		}
 };
-	
-
 int main(){
+	Juego *juego = new Juego("Elcallampa","un juego en el q te culean rico");
+	
+	
 	
 	
 	
