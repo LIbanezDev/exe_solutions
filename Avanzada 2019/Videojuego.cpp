@@ -1,38 +1,54 @@
-/* A usted se le ha pedido que dise�e un videojuego, que se compone de enemigos que luchan contra h�roes. En espec�fico se le pide
-que:
 
-Programe la clase Entidad, que posee vida (int) y nombre, programar getters, setters y constructor.
-
-Programe la clase Enemigo, que posee vida (int), nombre, ataque (int) y descripci�n. Programe getters y setters y un constructor.
-
-Programe la clase Heroe, que posee vida (int), ataque (int) y nombre. Programe getters, setters y constructor
-
-Programe la clase Juego, que posee 50 enemigos, 1 h�roe, un nombre y una descripci�n. Programe getters y setters para el nombre
-y la descripci�n, y un constructor que reciba estos par�metros tambi�n.
-
-Cree el m�todo addEnemigo de la clase Juego, que dado un enemigo, lo agrega al arreglo de enemigos del juego.
-
-Cree el m�todo addHeroe, que dado un h�roe lo agrega como h�roe del juego.
-
-Cree el m�todo atacarEnemigo del juego, que recibe un nombre (string), y le quita al enemigo de ese nombre dentro del arreglo
-tanta vida como el ataque del h�roe del juego, y le quita al heroe tanta vida como el ataque del enemigo.. De no existir h�roe, o no
-existir enemigo con ese nombre, no hace nada.
-
-Pruebe todo lo anterior en la funci�n main(): Cree un par de enemigos, un h�roe, un juego, agregue enemigos y heroe al juego, use
-atacarEnemigo un par de veces y mediante couts verifique que la vida de los enemigos va bajando. */
 #include<iostream>
 #include<conio.h>
+
 using namespace std;
-class Entidad{
+class Ataque{
+	private:
+		int danho;
+		int costo;
+	public:
+		Ataque(int danho, int costo){
+			this->danho = danho;
+			this->costo = costo;
+		}	
+		void setDanho(int danho){
+			this->danho = danho;
+		}
+		int getDanho(){
+			return danho;
+		}
+		void setCosto(int costo){
+			this->costo = costo;
+		}
+		int getCosto(){
+			return costo;
+		}		
+		void agregarHechizo(int danho, int costo){};
+};
+class Heroe{		
 	protected:
+		int ataque;
+		int p_ataque;
 		int vida;
 		string nombre;
+		int armor;
+		Ataque *ataques[3];
 	public:
-		Entidad(int vida, string nombre){
+		Heroe(int vida, string nombre, int ataque, int armor, int p_ataque){
+			this->ataque  = ataque;
+			this->p_ataque = p_ataque;
 			this->vida = vida;
 			this->nombre = nombre;
+			this->armor = armor;
 		}
-		void setVida(int vida){
+		void setAtaque(int ataque){
+			this->ataque = ataque;
+		}
+		int getAtaque(){
+			return ataque;
+		}
+				void setVida(int vida){
 			this->vida = vida;
 		}
 		void setNombre(string nombre){
@@ -43,66 +59,52 @@ class Entidad{
 		}
 		string getNombre(){
 			return nombre;
-		}	
+		}
+		void setArmor(int armor){
+			this->armor = armor;
+		}
+		int getArmor(){
+			return armor;
+		}
+		void agregarHechizo(int danho, int costo){
+			for(int i = 0; i < 3; i++){
+				if(ataques[i] == NULL){
+					ataques[i]->setDanho(danho);
+					ataques[i]->setCosto(costo);
+					break;
+				}
+			}
+		} 
+			
 };
-class Heroe: public Entidad{		// Herencia de atributos vida y nombre.
-	protected:
-		int ataque;
+class Enemigo: public Heroe{	
+	private:
+		Ataque *ataquesx[3];
 	public:
-		Heroe(int vida, string nombre, int ataque):Entidad(vida, nombre){
-			this->ataque  = ataque;
+		Enemigo(int vida, string nombre, int ataque, int armor, int p_ataque):Heroe(vida, nombre, ataque, armor, p_ataque){
 		}
-		void setAtaque(int ataque){
-			this->ataque = ataque;
-		}
-		int getAtaque(){
-			return ataque;
-		}			
-};
-class Enemigo: public Heroe{	// Herencia de atributos vida, nombre y ataque
-	private: 
-		char descripcion[50];
-	public:
-		Enemigo(int vida, string nombre, int ataque, char descripcion[50]):Heroe(vida, nombre, ataque){
-			this->descripcion[50] = descripcion[50];
-		}
-		void setDescripcion(char descripcion[50]){
-			this->descripcion[50] = descripcion[50];
-		}
-		char getDescripcion(){
-			return descripcion[50];
-		}	
+	void agregarHechizo(int danho, int costo){
+			for(int i = 0; i < 3; i++){
+				if(ataquesx[i] == NULL){
+					ataquesx[i]->setDanho(danho);
+					ataquesx[i]->setCosto(costo);
+					break;
+				}
+			}
+		} 		
 };
 class Juego{
 	private:
-		string name;
-		char d[30];
-		Enemigo *enemigos[50];
+		Enemigo *enemigos[4];
 		Heroe *heroe;
 	public:
-		Juego(string name, char d[30]){
-			this->name = name;
-			this->d[30] = d[30];
-		}
-		void setNombre(string nombre){
-			this->name = nombre;
-		}
-		string getNombre(){
-			return name;
-		}
-		void setDescripcion(char d[30]){
-			this->d[30] = d[30];
-		}
-		char getDescripcion(){
-			return d[30];
-		}
 		void addEnemigo(Enemigo *e){
-			for(int i = 0; i < 50; i++){
+			for(int i = 0; i < 4; i++){
 				if(enemigos[i] == NULL){
 					enemigos[i] = e;
 					break;
 				}
-				if(enemigos[49] != NULL){
+				if(enemigos[4] != NULL){
 					cout<<"No hay espacio para mas enemigos"<<endl;
 					break;
 				}
@@ -113,11 +115,10 @@ class Juego{
 				heroe = h;
 			}else{
 				cout<<"Ya hay un heroe en el juego!"<<endl;
-			}
-			
+			}			
 		}
 		void atacarEnemigo(string nombreEnemigo){
-			for(int i = 0; i < 50; i++){
+			for(int i = 0; i < 4; i++){
 				if(enemigos[i]->getNombre() == nombreEnemigo){
 					if(heroe != NULL){
 					cout<<"El heroe a atacado al enemigo: "<<nombreEnemigo<<"!!"<<endl;
@@ -131,7 +132,50 @@ class Juego{
 		}
 };
 int main(){
-	Juego *juego = new Juego("Elcallampa","un juego en el q te culean rico");
+	string n;
+	int v;
+	char d[50];
+	Juego *juego = new Juego();
+	cout<<endl;
+	cout<<"				   COP SIMULATOR 2019"<<endl<<endl;
+	cout<<"                Eres un paco, tu encomienda sera eliminar enemigos del estado"<<endl<<endl;
+	cout<<"			Ingresa tu nombre de paco: ";
+	cin>>n;
+	cout<<endl;
+	Heroe *heroe = new Heroe(1000, n, 25, 65, 20);
+	cout<<" "<<heroe->getNombre()<<", tus estadisticas son las siguientes:"<<endl<<endl;
+	cout<<" "<<heroe->getVida()<<" de vida"<<endl;
+	cout<<" "<<heroe->getAtaque()<<" de ataque"<<endl;
+	cout<<" "<<heroe->getArmor()<<" de armadura"<<endl<<endl;
+	cout<<" "<<"Estos son tus enemigos! "<<endl<<endl;
+	Enemigo *e1 = new Enemigo(300, "mapuche", 15, 60, 20);
+	Enemigo *e2 = new Enemigo(200, "liceano", 45, 20,20);
+	Enemigo *e3 = new Enemigo(150, "negro matapacos", 25, 35,20);
+	Enemigo *e4 = new Enemigo(320, "vendedor de verduras", 30, 38,20);
+	cout<<" Nombre:             "<<e1->getNombre()<<"   |   "<<e2->getNombre()<<"  |   "<<e3->getNombre()<<"  |  "<<e4->getNombre()<<endl;
+	cout<<" Vida:                "<<e1->getVida()<<"      |     "<<e2->getVida()<<"    |        "<<e3->getVida()<<"         |        "<<e4->getVida()<<endl;
+	cout<<" Ataque:               "<<e1->getAtaque()<<"      |      "<<e2->getAtaque()<<"    |         "<<e3->getAtaque()<<"         |         "<<e4->getAtaque()<<endl;
+	cout<<" Armadura:             "<<e1->getArmor()<<"      |      "<<e2->getArmor()<<"    |         "<<e3->getArmor()<<"         |         "<<e4->getArmor()<<endl<<endl<<endl;
+
+	
+	cout<<"                                COMIENZA EL JUEGO"<<endl;
+	cout<<" "<<"REGLAS: "<<endl;
+	
+	while(true){
+		cout<<"Es tu turno de atacar."<<endl<<endl;
+		cout<<"Tienes: ";
+		break;
+		
+		
+		
+		
+	}
+	
+
+	
+	
+	
+	
 	
 	
 	
