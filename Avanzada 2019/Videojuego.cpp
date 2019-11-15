@@ -141,12 +141,12 @@ int main(){
 	cout<<" Armadura:             "<<e1->getArmor()<<"      |      "<<e2->getArmor()<<"    |         "<<e3->getArmor()<<"         |         "<<e4->getArmor()<<endl<<endl<<endl;
 
 	
-	cout<<"                                COMIENZA EL JUEGO"<<endl;
-	cout<<" "<<"REGLAS"<<endl<<endl;
+	cout<<"                                COMIENZA EL JUEGO"<<endl<<endl;
+	cout<<"				     REGLAS"<<endl<<endl<<endl;
 	cout<<" -"<<"Tanto tu como tus enemigos cuentan con 20 puntos de ataque al inicio del turno"<<endl;
 	cout<<" -"<<"En cada turno deberas usar tus puntos de ataque disponibles."<<endl;
-	cout<<" -"<<"Como paco, cuentas con 4 hechizos disponibles, los cuales consumen puntos de ataque."<<endl;
-	cout<<" -"<<"A traves de "<<endl;
+	cout<<" -"<<"Cuentas con 4 hechizos disponibles, los cuales consumen puntos de ataque."<<endl;
+	cout<<" -"<<"En cada turno, eliges a quien atacar mediante un ID de 1 a 4 y luego seleccionas los ataques a lanzar tambien con ID de 1 a 4 "<<endl;
 	
 	while(true){
 		cout<<" Es tu turno de atacar,"<<" tienes "<<heroe->getP_ataque()<<" puntos de ataque."<<endl;
