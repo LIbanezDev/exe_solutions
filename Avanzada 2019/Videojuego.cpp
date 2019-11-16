@@ -1,10 +1,11 @@
 
-#include<iostream>
-#include<conio.h>
+#include <iostream>
+#include <conio.h>
 #include <cstdlib>
 #include <ctime>
 
 using namespace std;
+
 class Ataque{
 	private:
 		int danhomax;
@@ -134,6 +135,7 @@ class Juego{
 		}
 		void atacarEnemigo(Ataque *a, int id){			
 				srand((int)time(0));			
+				cout<<a->getDanhomin();
 				int danho = (rand() % a->getDanhomax()) + a->getDanhomin();
 				cout<<endl;
 				cout<<" El ataque "<<a->getNombre()<<" ha causado "<<danho<<" pts!"<<endl;
@@ -166,11 +168,12 @@ int main(){
 	Enemigo *e2 = new Enemigo(200, "liceano", 20,20);
 	Enemigo *e3 = new Enemigo(150, "negro matapacos", 35,20);
 	Enemigo *e4 = new Enemigo(320, "vendedor de verduras", 38,20);
-	Ataque *batazo = new Ataque(1,"batazo", 30, 15, 4);
-	Ataque *lacrimogena = new Ataque(2,"lacrimogena", 45, 30, 8);
-	Ataque *zorrillo = new Ataque(3,"zorrillo", 35, 20, 6);
-	Ataque *combo = new Ataque(4,"combo", 20, 10, 2);
-	heroe->agregarAtaquesheroe(batazo, lacrimogena, zorrillo, combo);
+	Ataque *a1 = new Ataque(1,"batazo", 30, 15, 4);
+	Ataque *a2 = new Ataque(2,"lacrimogena", 45, 30, 8);
+	Ataque *a3 = new Ataque(3,"zorrillo", 35, 20, 6);
+	Ataque *a4 = new Ataque(4,"combo", 20, 10, 2);
+	a1->setDanhomin(15); a2->setDanhomin(30); a3->setDanhomin(20); a4->setDanhomin(10);
+	heroe->agregarAtaquesheroe(a1, a2, a3, a4);
 	cout<<" Nombre:             "<<e1->getNombre()<<"   |   "<<e2->getNombre()<<"  |   "<<e3->getNombre()<<"  |  "<<e4->getNombre()<<endl;
 	cout<<" Vida:                "<<e1->getVida()<<"      |     "<<e2->getVida()<<"    |        "<<e3->getVida()<<"         |        "<<e4->getVida()<<endl;
 	cout<<" Armadura:             "<<e1->getArmor()<<"      |      "<<e2->getArmor()<<"    |         "<<e3->getArmor()<<"         |         "<<e4->getArmor()<<endl<<endl<<endl;
@@ -181,45 +184,32 @@ int main(){
 	cout<<endl;
 	cout<<"                                COMIENZA EL JUEGO"<<endl<<endl;
 	cout<<"				     REGLAS"<<endl<<endl<<endl;
-	cout<<" -"<<" Tanto tu como tus enemigos cuentan con 20 puntos de ataque al inicio del turno"<<endl;
-	cout<<" -"<<" En cada turno deberas usar tus puntos de ataque disponibles."<<endl;
-	cout<<" -"<<" Cuentas con 4 hechizos disponibles, los cuales consumen puntos de ataque."<<endl;
-	cout<<" -"<<" En cada turno, eliges a quien atacar mediante un ID de 1 a 4 y"<<endl;
-	cout<<" "<<"  luego seleccionas los ataques a lanzar tambien con ID de 1 a 4 "<<endl<<endl;
+	cout<<" -"<<" Tanto tu como tus enemigos cuentan con 20 puntos de ataque al inicio del turno"<<endl<<endl;
+	cout<<" -"<<" En cada turno deberas usar tus puntos de ataque disponibles."<<endl<<endl;
+	cout<<" -"<<" Cuentas con 4 hechizos disponibles, los cuales consumen puntos de ataque."<<endl<<endl;
+	cout<<" -"<<" En cada turno, eliges a quien atacar mediante un ID de 1 a 4 y"<<endl<<endl;
+	cout<<" "<<"  luego seleccionas los ataques a lanzar tambien con ID de 1 a 4 ";
 	getch();
 	system("CLS()");
 		
-	while(true){
 		cout<<endl;
 		cout<<" Es tu turno de atacar,"<<" tienes "<<heroe->getP_ataque()<<" puntos de ataque."<<endl<<endl;
 		cout<<" Nombre:           1."<<e1->getNombre()<<"   | 2."<<e2->getNombre()<<"  | 3."<<e3->getNombre()<<"  | 4."<<e4->getNombre()<<endl;
 		cout<<" Vida:                "<<e1->getVida()<<"      |     "<<e2->getVida()<<"    |        "<<e3->getVida()<<"         |         "<<e4->getVida()<<endl;
 		cout<<" Armadura:             "<<e1->getArmor()<<"      |      "<<e2->getArmor()<<"    |         "<<e3->getArmor()<<"         |          "<<e4->getArmor()<<endl<<endl;
+		cout<<" Ataques disponibles."<<endl<<endl;
+		cout<<" 1- "<<a1->getNombre()<<" "<<a1->getDanhomin()<<"-"<<a1->getDanhomax()<<" "<<a1->getCosto()<<"P.A"<<endl;
+		cout<<" 2- "<<a2->getNombre()<<" "<<a2->getDanhomin()<<"-"<<a2->getDanhomax()<<" "<<a2->getCosto()<<"P.A"<<endl;
+		cout<<" 3- "<<a3->getNombre()<<" "<<a3->getDanhomin()<<"-"<<a4->getDanhomax()<<" "<<a3->getCosto()<<"P.A"<<endl;
+		cout<<" 4- "<<a4->getNombre()<<" "<<a4->getDanhomin()<<"-"<<a4->getDanhomax()<<" "<<a4->getCosto()<<"P.A"<<endl<<endl;
 		cout<<" Ingresa ID de enemigo a atacar: ";
-		cin>>id;
+		cin>>id;		
 		cout<<" Ingresa ID de ataque a utilizar: ";
 		cin>>at;
+		at--;
+		juego->atacarEnemigo(a1, 2);
 		
-		juego->atacarEnemigo(batazo, id);
-		break;
-		
-		
-		
-		
-	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			
 	getch();
 	return 0;
 }
