@@ -1,10 +1,32 @@
-
+#include <windows.h>
 #include <iostream>
 #include <conio.h>
 #include <cstdlib>
 #include <ctime>
+#define ARRIBA 72
+#define ABAJO 80 
+#define IZQUERDA 75
+#define DERECHA 77
 
 using namespace std;
+
+void ocultarCursor(){		// ocultar cursor
+	HANDLE hCon;
+	hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cci;
+	cci.dwSize = 2;
+	cci.bVisible = FALSE;	
+	SetConsoleCursorInfo(hCon, &cci);
+}
+
+void gotoxy(int x, int y){				// ir a una coordenada especificada en los paramtetros (x,y)
+	HANDLE hCon;
+	hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD dwPos;
+	dwPos.X = x;
+	dwPos.Y = y;
+	SetConsoleCursorPosition(hCon, dwPos);	
+}
 
 class Ataque{
 	private:
@@ -149,7 +171,9 @@ class Juego{
 		
 };
 int main(){
+	ocultarCursor();
 	string n;
+	int x = 10, y = 10;
 	int id, at;
 	char d[50];
 	Juego *juego = new Juego();
@@ -191,23 +215,33 @@ int main(){
 	cout<<" "<<"  luego seleccionas los ataques a lanzar tambien con ID de 1 a 4 ";
 	getch();
 	system("CLS()");
+		gotoxy(x,y);
+		cout<<"*"; 
 		
-		cout<<endl;
-		cout<<" Es tu turno de atacar,"<<" tienes "<<heroe->getP_ataque()<<" puntos de ataque."<<endl<<endl;
-		cout<<" Nombre:           1."<<e1->getNombre()<<"   | 2."<<e2->getNombre()<<"  | 3."<<e3->getNombre()<<"  | 4."<<e4->getNombre()<<endl;
-		cout<<" Vida:                "<<e1->getVida()<<"      |     "<<e2->getVida()<<"    |        "<<e3->getVida()<<"         |         "<<e4->getVida()<<endl;
-		cout<<" Armadura:             "<<e1->getArmor()<<"      |      "<<e2->getArmor()<<"    |         "<<e3->getArmor()<<"         |          "<<e4->getArmor()<<endl<<endl;
-		cout<<" Ataques disponibles."<<endl<<endl;
-		cout<<" 1- "<<a1->getNombre()<<" "<<a1->getDanhomin()<<"-"<<a1->getDanhomax()<<" "<<a1->getCosto()<<"P.A"<<endl;
-		cout<<" 2- "<<a2->getNombre()<<" "<<a2->getDanhomin()<<"-"<<a2->getDanhomax()<<" "<<a2->getCosto()<<"P.A"<<endl;
-		cout<<" 3- "<<a3->getNombre()<<" "<<a3->getDanhomin()<<"-"<<a4->getDanhomax()<<" "<<a3->getCosto()<<"P.A"<<endl;
-		cout<<" 4- "<<a4->getNombre()<<" "<<a4->getDanhomin()<<"-"<<a4->getDanhomax()<<" "<<a4->getCosto()<<"P.A"<<endl<<endl;
-		cout<<" Ingresa ID de enemigo a atacar: ";
-		cin>>id;		
-		cout<<" Ingresa ID de ataque a utilizar: ";
-		cin>>at;
-		at--;
-		juego->atacarEnemigo(a1, 2);
+		while(true){
+			if(kbhit()){
+				char tecla = getch();
+				gotoxy(x,y);
+				cout<<" ";
+				if(tecla == ARRIBA){
+					y--;
+				}
+				if(tecla == ABAJO){
+					y++;
+				}
+				if(tecla == DERECHA){
+					x++;
+				}
+				if(tecla == IZQUERDA){
+					x--;
+				}
+				gotoxy(x,y);
+				cout<<"*";
+				
+			}
+			
+			
+		}
 		
 			
 	getch();
