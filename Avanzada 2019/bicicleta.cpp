@@ -1,11 +1,10 @@
 #include<iostream>
 #include<windows.h> 
 #include<conio.h>
-#define ARRIBA 119
-#define ABAJO 115 
-#define IZQUERDA 97
-#define DERECHA 100
-#define DISPARAR 10
+#define ARRIBA 72
+#define ABAJO 80
+#define IZQUERDA 75	
+#define DERECHA 77
 
 using namespace std;
    
@@ -52,8 +51,7 @@ void pintarLimites(){
 		cout<<(char)186;
 	}
 }
-class Bicicleta{
-	
+class Bicicleta{	
 	private:
 		int x, y;
 	public:
@@ -62,20 +60,20 @@ class Bicicleta{
 			this->y = y;
 		}
 	void imprimir(){		// imprime bicicleta
-	gotoxy(x,y);
-	cout<<"   "<<(char)44<<(char)95<<(char)95<<(char)111;
-	gotoxy(x,y + 1);
-	cout<<" "<<(char)95<<(char)45<<(char)92<<(char)95<<(char)60<<(char)44;
-	gotoxy(x,y + 2);
-	cout<<(char)40<<(char)42<<(char)41<<(char)47<<(char)39<<(char)40<<(char)42<<(char)41;
+		gotoxy(x,y);
+		cout<<"   "<<(char)44<<(char)95<<(char)95<<(char)111;
+		gotoxy(x,y + 1);
+		cout<<" "<<(char)95<<(char)45<<(char)92<<(char)95<<(char)60<<(char)44;
+		gotoxy(x,y + 2);
+		cout<<(char)40<<(char)42<<(char)41<<(char)47<<(char)39<<(char)40<<(char)42<<(char)41;
 	}
 	void borrar(){
-	gotoxy(x,y);
-	cout<<"       ";
-	gotoxy(x,y + 1);
-	cout<<"       ";
-	gotoxy(x,y + 2);
-	cout<<"        ";	
+		gotoxy(x,y);
+		cout<<"       ";
+		gotoxy(x,y + 1);
+		cout<<"       ";
+		gotoxy(x,y + 2);
+		cout<<"        ";	
 	}
 	
 	void mover(){
@@ -104,14 +102,12 @@ int main(){
 	ocultarCursor();
 	gotoxy(35,1);
 	cout<<" LA BICI ";
-	gotoxy(35,2);
-	cout<<" W A S D ";
+	gotoxy(30,2);
+	cout<<"FLECHAS PARA MOVER";
 	Bicicleta *bici = new Bicicleta(7,7);
 	bici->imprimir();
 	while(true){
 		bici->mover();	
-			
-		
 		
 	}	
 }
