@@ -8,6 +8,7 @@
 
 
 using namespace std;
+
 void gotoxy(int x, int y){			// posiciona al cursor en las coordenadas (x,y) del CLI
 	HANDLE hCon;
 	hCon = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -26,7 +27,7 @@ void ocultarCursor(){
 	SetConsoleCursorInfo(hCon, &cci);
 }
 void pintarLimites(){
-	for(int i = 3; i < 78; i++){
+	for(int i = 3; i < 78; i++){	// Se pintan los limites con tal de formar un rectangulo de 20 de alto y 77 de ancho
 		if(i == 3){
 			gotoxy(i,3);
 			cout<<(char)201;
@@ -51,6 +52,7 @@ void pintarLimites(){
 		cout<<(char)186;
 	}
 }
+
 class Serpiente{
 	private:
 		int x, y;
@@ -59,17 +61,52 @@ class Serpiente{
 		Serpiente(int x, int y){
 			this->x = x;
 			this->y = y;
+		}
+		void setXY(int x, int y){
+			this->x = x;
+			this->y = y;
 		}	
-		void imprimirInicio(){
-			
+		void borrar(){
+			gotoxy(x-1,y);
+			cout<<"  ";
 		}
-		void agrandar(){
-		
+		void imprimir(){
+			gotoxy(x,y);
+			cout<<(char)220;
 		}
-		void comer(){
-		
-		}
-		
+		void mover(){
+			if(kbhit()){
+				char tecla = getch();
+				while(tecla == ARRIBA){
+					borrar();
+					y--;
+					imprimir();
+					Sleep(200);
+					getch();
+				}
+				while(tecla == ABAJO){
+					borrar();
+					y++;
+					imprimir();
+					Sleep(200);
+					getch();
+				}
+				while(tecla == DERECHA){
+					borrar();
+					x++;
+					imprimir();
+					Sleep(200);
+					getch();
+				}
+				while(tecla == IZQUERDA){
+					borrar();
+					x--;
+					imprimir();
+					Sleep(200);
+					getch();
+				}				
+			}
+		}		
 };
 class Comida{
 	private:
@@ -81,6 +118,12 @@ class Comida{
 int main(){
 	ocultarCursor();	
 	pintarLimites();	
+	int x = 7, y = 7;
+	Serpiente *snake = new Serpiente(x,y);
+	snake->imprimir();
+	while(true){
+		snake->mover();		
+	}
 	getch();
 	return 0;
 }
