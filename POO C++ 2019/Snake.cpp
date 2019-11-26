@@ -67,43 +67,42 @@ class Serpiente{
 			this->y = y;
 		}	
 		void borrar(){
-			gotoxy(x-1,y);
+			gotoxy(x,y);
 			cout<<"  ";
 		}
 		void imprimir(){
 			gotoxy(x,y);
-			cout<<(char)220;
+			cout<<(char)215;
 		}
 		void mover(){
-			if(kbhit()){
+			 if(kbhit()){
 				char tecla = getch();
-				while(tecla == ARRIBA){
+				if(tecla == ARRIBA && y > 4){
 					borrar();
 					y--;
 					imprimir();
-					Sleep(200);
-					getch();
+					
+				
 				}
-				while(tecla == ABAJO){
+				if(tecla == ABAJO && y < 24){
 					borrar();
 					y++;
 					imprimir();
-					Sleep(200);
-					getch();
+					
+					
 				}
-				while(tecla == DERECHA){
+				if(tecla == DERECHA && x < 75){
 					borrar();
 					x++;
 					imprimir();
-					Sleep(200);
-					getch();
+					
+					
 				}
-				while(tecla == IZQUERDA){
+				if(tecla == IZQUERDA && x > 4){
 					borrar();
 					x--;
 					imprimir();
-					Sleep(200);
-					getch();
+					
 				}				
 			}
 		}		
@@ -118,10 +117,11 @@ class Comida{
 int main(){
 	ocultarCursor();	
 	pintarLimites();	
-	int x = 7, y = 7;
+	int x = 10, y = 10;
 	Serpiente *snake = new Serpiente(x,y);
 	snake->imprimir();
 	while(true){
+		
 		snake->mover();		
 	}
 	getch();
