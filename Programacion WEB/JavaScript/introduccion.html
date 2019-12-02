@@ -48,14 +48,17 @@
         var h = [1,2,3,4,5, true, "Lucas"];
         console.log(h); //Imprime todo el arreglo en formato Array(tamaño) = [""]
         console.log(h[5]); // Imprime elemento del arreglo ubicado en el indice [n]
+        
+        const constante = [10,20,30];
+        constante.push(23);   // agrega elemento al final del arreglo
 
 
         // Bucles
-        for(var i = 0; i < 7; i++){ // imprimir arreglo elemento por elemento
+        for(let i = 0; i < 7; i++){ // imprimir arreglo elemento por elemento
             console.log(h[i]);
         }
         
-        i = 0;        
+        var i = 0;        
         
         while(i < 7){           
             console.log(h[i]);     // ejecutando la misma instruccion con 3 bucles distintos, siendo, en este caso, el bucle for el mas efectivo.
