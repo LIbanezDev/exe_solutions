@@ -37,7 +37,7 @@
                   
     }else{
         $s = NULL;
-        $pdo = NULL; // Cierra conexion         // en caso de las pass no ser iguales alerta al usuario
+        $pdo = NULL; // Cierra conexion         en caso de las pass no ser iguales alerta al usuario
         echo'<script type="text/javascript">
         alert("Ingrese contraseñas iguales!!!!!");
         window.location.href="index.php";
