@@ -1,7 +1,11 @@
+var boton = document.getElementById("boton");
 
-
-var titulo = document.getElementById("titulo");
-
-function cambiarTitulo(){
-    titulo.innerHTML = "Nuevo titulo!";
+boton.onmouseover = function(){
+    boton.style.color = "red";
+}
+boton.onmouseout = function(){
+    boton.style.color = "black";
+}
+boton.onmousedown = function(){
+    boton.style.color = "blue";
 }
