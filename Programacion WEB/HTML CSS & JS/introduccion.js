@@ -3,7 +3,6 @@
         var n; // variable de cualquier tipo
         const k = 5; // variable inalterable
         
-
         // Condicionales
         n = 10;
         console.log("N es igual "); // Imprime mensajes por la consola de los navegadores web
