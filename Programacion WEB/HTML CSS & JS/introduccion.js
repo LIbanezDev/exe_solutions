@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clave</title>
-</head>
-<body>
-    
-
-
-
-
-
-
-
-    <script>
-        
+       
         // Variables
         var n; // variable de cualquier tipo
         const k = 5; // variable inalterable
@@ -81,6 +63,4 @@
         
         console.log(sumar(3, 5));
 
-    </script>
-</body>
-</html>
+ 
