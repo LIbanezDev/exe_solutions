@@ -1,4 +1,4 @@
 Proyectos y ejercicios realizados con C++.
 
 
-Destaca la Programación orientada a objetos. 
+Mayormente basados en la programación orientada a objetos. 
