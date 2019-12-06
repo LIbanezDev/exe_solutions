@@ -46,38 +46,53 @@ int main(){
 	canciones.push_back(new Cancion("h2","a2"));
 	canciones.push_back(new Cancion("h3","a3"));
 	canciones.push_back(new Cancion("h4","a1"));
+	
 	cout<<"Cantidad de canciones registradas: "<<canciones.size()<<endl;
+	
 	for(int i = 0; i < canciones.size(); i++){
-		cout<<canciones[i]->getNombre()<<endl;
+		cout<<"Cancion numero "<<i<<": "<<canciones[i]->getNombre()<<", Artista: "<<canciones[i]->getArtista()<<endl;
 	}
+	
 	cout<<"Primera cancion. "<<endl;
 	cout<<"Nombre: "<<canciones.front()->getNombre()<<" Artista: "<<canciones.front()->getArtista()<<endl;
-	cout<<"Segunda cancion. "<<endl;
+	cout<<"Ultima cancion. "<<endl;
 	cout<<"Nombre: "<<canciones.back()->getNombre()<<" Artista: "<<canciones.back()->getArtista()<<endl;
 	string n;
 	cout<<"Ingrese nombre de cancion a eliminar: ";
 	cin>>n;
 	for(int i = 0; i < canciones.size(); i++){
 		if(canciones[i]->getNombre() == n){
-			canciones.erase(i);
+			canciones.erase(canciones.begin() + i);
 			break;
 		}
 		if(i == 3){
 			cout<<"No se encontro la cancion solicitada."<<endl;
 		}		
 	}
-	Cancion *c = new Cancion("h10","a10");
-	int n = canciones.size();
+	cout<<"----------------------------"<<endl;
+	
+	for(int i = 0; i < canciones.size(); i++){
+		cout<<"Cancion numero "<<i<<": "<<canciones[i]->getNombre()<<", Artista: "<<canciones[i]->getArtista()<<endl;
+	}
+	
+	Cancion *c = new Cancion("hola", "lucapo");
 	canciones.push_back(c);
-	canciones.erase(n);
+	canciones.erase(canciones.begin() + canciones.size() - 2);	
+	
+	cout<<"----------------------------"<<endl;
+	
+	for(int i = 0; i < canciones.size(); i++){
+		cout<<"Cancion numero "<<i<<": "<<canciones[i]->getNombre()<<", Artista: "<<canciones[i]->getArtista()<<endl;
+	}	
 	cout<<"Nombre de un artista: ";
 	cin>>n;
 	int k = 0;
 	for(int i = 0; i < canciones.size(); i++){
-		if(n == canciones[i]->getNombre){
+		if(canciones[i]->getArtista() == n){
 			k++;
 		}
 	}
+	cout<<"----------------------------"<<endl;
 	cout<<"Hay "<<k<<" canciones del artista "<<n<<endl;
 	
 	
