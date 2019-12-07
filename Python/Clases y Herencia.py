@@ -1,3 +1,7 @@
+# Crear clase persona con atributos nombre y edad con metodos de decir nombre y decir edad.
+# Crear clase estudiante que herede los atributos nombre y edad y agregue un nuevo atributo llamado grado
+# Crear metodo presentacion en la clase estudiante que incluya los 3 atributos 
+
 class Persona:
     def __init__(self, nombre, edad):
         self.nombre = nombre
