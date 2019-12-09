@@ -2,7 +2,6 @@ class Entidad:
     def __init__(self, vida, nombre):
         self.vida = vida
         self.nombre = nombre
-
     def setVida(self, vida):
         self.vida = vida
     def setNombre(self, nombre):
@@ -54,18 +53,18 @@ class Juego:
             if i.getNombre() == nombre:
                 i.setVida(i.getVida() - self.heroe.getAtaque())
                 if i.getVida() <= 0:
-                    print("----------")
-                    print(i.getNombre(), "Ha muerto") 
-                    print("----------")                 
-                    self.enemigos.remove(i)        
-
+                    print(i.getNombre(), "Ha muerto")
+                    self.enemigos.remove(i)       
+    def getTamanho(self):
+        return len(self.enemigos)
+        
 e1 = Enemigo(300, "e1", 10, "Un capo")
 e2 = Enemigo(301, "e2", 11, "Un capo1")
 e3 = Enemigo(302, "e3", 12, "Un capo2")
 e4 = Enemigo(303, "e4", 13, "Un capo3")
 e5 = Enemigo(304, "e5", 14, "Un capo4")
 e6 = Enemigo(305, "e6", 15, "Un capo5")
-hero = Heroe(500, "Lucapo", 50)
+hero = Heroe(500, "Lucapo", 400)
 juego = Juego("Civil War", "1 Hero versus 10 enemys, Who will win?")
 juego.addHeroe(hero)
 juego.addEnemigo(e1)
@@ -75,10 +74,10 @@ juego.addEnemigo(e4)
 juego.addEnemigo(e5)
 juego.addEnemigo(e6)
 print("Comienza el juego, se te pedira el nombre del enemigo a atacar.")
-while(True):
-    for i in range(6):
-        print("Enemigo numero ", i+1, ", Nombre:",juego.getEnemigo(i).getNombre(),", Vida:", juego.getEnemigo(i).getVida(),", Ataque:",juego.getEnemigo(i).getAtaque(),".")
+for i in range(juego.getTamanho()):
+    print("Enemigo numero ", i+1, ", Nombre:",juego.getEnemigo(i).getNombre(),", Vida:", juego.getEnemigo(i).getVida(),", Ataque:",juego.getEnemigo(i).getAtaque(),".")
+while(True):   
     eleccion = input("Ingrese nombre de enemigo a atacar: ")
     juego.atacarEnemigo(eleccion)
-    for i in range(6):
+    for i in range(juego.getTamanho()):
         print("Enemigo numero ", i+1, ", Nombre:",juego.getEnemigo(i).getNombre(),", Vida:", juego.getEnemigo(i).getVida(),", Ataque:",juego.getEnemigo(i).getAtaque(),".")
