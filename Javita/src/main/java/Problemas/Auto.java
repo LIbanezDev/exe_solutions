@@ -1,26 +1,26 @@
 package Problemas;
 
 public class Auto {
-    String m;
-    int a;
+    private String marca;
+    private int año;
     
     public Auto(String marca, int anho){
-        m = marca;
-        a = anho;
-    }
+        this.marca = marca;
+        this.año = anho;
+    }  
     public String getMarca(){
-        return m;
+        return marca;
     }
     public int getAnho(){
-        return a;
+        return año;
     }
     public void setMarca(String marca){
-        m = marca;
+        this.marca = marca;
     }
-    public void setAnho(int anho){
-        a = anho;
+    public void setAnho(int año){
+        this.año = año;
     }
     public void datosAuto(){
-        System.out.println("Marca "+m+", Anho "+a);
+        System.out.println("Marca "+marca+", Anho "+año);
     }
 }
