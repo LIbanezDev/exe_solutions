@@ -1,10 +1,10 @@
-package Problemas;
+package Herencia;
 
-public class Auto {
+public class Estudiante extends Persona {
     private String marca;
     private int año;
     
-    public Auto(String marca, int anho){
+    public Estudiante(String marca, int anho){
         this.marca = marca;
         this.año = anho;
     }  
@@ -22,5 +22,10 @@ public class Auto {
     }
     public void datosAuto(){
         System.out.println("Marca "+marca+", Anho "+año);
+    }
+
+    @Override
+    public void presentarse() {
+        System.out.println("hOLA PANAS");
     }
 }
