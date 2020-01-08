@@ -1,31 +1,23 @@
 package Herencia;
 
+import javax.swing.JOptionPane;
+
 public class Estudiante extends Persona {
     private String marca;
     private int año;
     
-    public Estudiante(String marca, int anho){
-        this.marca = marca;
-        this.año = anho;
+    public Estudiante(String nombre, int edad, int peso){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.peso = peso;
     }  
-    public String getMarca(){
-        return marca;
+    public void setDatos(){
+        nombre = JOptionPane.showInputDialog("Ingrese nombre de persona: ");
+        edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese edad de persona: "));
+        peso = Integer.parseInt(JOptionPane.showInputDialog("Ingrese peso de persona: "));      
     }
-    public int getAnho(){
-        return año;
+    public void getDatos(){
+        JOptionPane.showMessageDialog(null, "Nombre: " + nombre + ", edad: " + edad + ", peso: " + peso, "Datos de la persona", 1);
     }
-    public void setMarca(String marca){
-        this.marca = marca;
-    }
-    public void setAnho(int año){
-        this.año = año;
-    }
-    public void datosAuto(){
-        System.out.println("Marca "+marca+", Anho "+año);
-    }
-
-    @Override
-    public void presentarse() {
-        System.out.println("hOLA PANAS");
-    }
+    
 }
