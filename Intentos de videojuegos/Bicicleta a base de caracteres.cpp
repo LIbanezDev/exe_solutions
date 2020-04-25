@@ -101,7 +101,7 @@ int main(){
 	pintarLimites();
 	ocultarCursor();
 	gotoxy(35,1);
-	cout<<" LA BICI ";
+	cout<<" Bicicleta ";
 	gotoxy(30,2);
 	cout<<"FLECHAS PARA MOVER";
 	Bicicleta *bici = new Bicicleta(7,7);
