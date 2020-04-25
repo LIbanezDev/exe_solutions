@@ -18,36 +18,8 @@ int main()
     Resultado = (A+B) / (C+D);
     cout.precision(3);
     cout<<"El resultado de la operacion (a+b):(c+d) es:"<<Resultado<<endl;
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 return 0;
-
-
-
 }
 
 
