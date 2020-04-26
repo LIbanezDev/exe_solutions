@@ -1,3 +1,8 @@
+"""
+http://progra.usm.cl/apunte/ejercicios/1/votaciones-confech.html
+
+"""
+
 n = int(input("Cantidad de universidades:"))
 universidades = [] # Nombres de universidades
 cantidades_votos = []  # Almacena listas de tamaño 4 para los votos vinculando el indice con el nombre en la lista univeridades[]

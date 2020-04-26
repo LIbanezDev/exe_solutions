@@ -1,7 +1,5 @@
 """
-Una circunferencia en el plano está definida por tres valores: las coordenadas (x, y) de su centro, y su radio r.
-
-Escriba un programa que determine la posicion relativa de dos circunferencias
+http://progra.usm.cl/apunte/ejercicios/1/interseccion-circunferencias.html
 
 """
 import math

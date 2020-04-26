@@ -1,3 +1,7 @@
+"""
+http://progra.usm.cl/apunte/ejercicios/1/votaciones-confech.html
+
+"""
 class Universidad:
     def __init__(self, nombre, voto):
         self.nombre = nombre
