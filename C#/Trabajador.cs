@@ -9,15 +9,21 @@ namespace Clases
         public int Edad { get; }
         public int Sueldo { get; }
         public string Nombre { get; }
+        public int Identificador { get; }
+        private static int identificador = 1;
 
         public Trabajador(string nombre, int edad, int sueldo)
         {
             this.Nombre = nombre;
             this.Edad = edad;
             this.Sueldo = sueldo;
+            this.Identificador = identificador;
+            identificador++;
         }
 
-        abstract override public string ToString();
+        public abstract override string ToString();
+        public override int GetHashCode() => Identificador;
+
     }
     class FrontEnd : Trabajador
     {
@@ -32,6 +38,7 @@ namespace Clases
         {
             return "My name is " + Nombre + ", i am " + Edad + " years old FrontEnd Developer " + ", my actual salary is " + Sueldo + " and i love " + FavoriteTechnology;
         }
+
     }
     class BackEnd : Trabajador
     {
@@ -45,6 +52,6 @@ namespace Clases
         public override string ToString()
         {
             return "My name is " + Nombre + ", i am a " + Edad + " years old BackEnd Developer " + ", my actual salary is " + Sueldo + " and i have been an engineer for " + Experience + " years";
-        }
+        }             
     }
 }

@@ -4,9 +4,15 @@ using System.Text;
 
 namespace Clases
 {
+    /* Se crea delegate, cada uno puede referenciar a diferentes metodos o funciones 
+    siempre y cuando se cumpla que el tipo de retorno y de parametros de aquellos 
+    es igual al declarado en el delegate. (LambdaDelegates) */
+
+    public delegate double calcularCosas(double n1, double n2);
+
     class EjerciciosVarios
     {
-        static void laboratiorioUno()
+        public static void laboratiorioUno()
         {
             String nombreAlumno;
             int cursoCapacitacion;
@@ -101,7 +107,7 @@ namespace Clases
             Console.WriteLine(textoMayorDos);
             Console.WriteLine(textoMayorTres);
         }
-        static void digitoVerificadorRut()
+        public static void digitoVerificadorRut()
         {
             double rutInt = int.Parse(Console.ReadLine());
             double[] rutIntArray = new double[8];
@@ -136,6 +142,136 @@ namespace Clases
                     Console.WriteLine(11 - resto);
                     break;
             }
+        }
+        public static void collectionLinkedList()
+        {
+            LinkedList<int> listaNumeros = new LinkedList<int>();
+            int[] numeros = new int[] { 1, 2, 3, 4 };
+            foreach (int i in numeros)
+            {
+                listaNumeros.AddLast(i);
+            }
+            LinkedListNode<int> nodoTest = new LinkedListNode<int>(15);
+
+            listaNumeros.AddAfter(listaNumeros.Find(3), nodoTest);
+
+            int numero;
+
+            for (LinkedListNode<int> nodo = listaNumeros.First; nodo != null; nodo = nodo.Next)
+            {
+                numero = nodo.Value;
+                Console.WriteLine(numero);
+            }
+        }
+        public static void collectionQueue()
+        {
+            Queue<int> cola = new Queue<int>();
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Ingrese valor para el final de la cola, 0 si desea eliminar el primero");
+                    int n = Int32.Parse(Console.ReadLine());
+                    if (n == 0)
+                    {
+                        Console.WriteLine("Se elimino el valor " + cola.Peek());
+                        cola.Dequeue();
+                    }
+                    else
+                    {
+                        cola.Enqueue(n);
+                        Console.WriteLine("Se agrego el valor " + n + " al final de la cola.");
+                    }
+                    Console.WriteLine("---------------");
+                    Console.WriteLine("Asi quedo la cola");
+                    foreach (int k in cola)
+                    {
+                        Console.WriteLine(k);
+                    }
+                    Console.WriteLine("---------------");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+        public static void collecionDictionary()
+        {
+            Dictionary<string, int> diccionario = new Dictionary<string, int>();
+            diccionario.Add("hola", 3);
+            diccionario.Add("hola1", 10);
+            diccionario.Add("hola2", 45);
+            diccionario.Add("hola3", 23);
+            diccionario.Add("hola4", 22);
+
+            // get key, value
+            foreach (KeyValuePair<string, int> valores in diccionario)
+            {
+                Console.WriteLine(valores.Key);
+                Console.WriteLine(valores.Value);
+            }
+            // get values
+            Dictionary<string, int>.ValueCollection values = diccionario.Values;
+            foreach (int value in values)
+            {
+                Console.WriteLine(value);
+            }
+        }
+        public static bool esPrimo(int n)
+        {
+            int contador = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                if (n % i == 0) contador++;
+            }
+
+            if (contador == 2 || n == 1) return true;
+            return false;
+        }
+        public static void LambdaDelegates()
+        {
+            calcularCosas calculo = new calcularCosas((n1, n2) => n1 * n2); // Se usa expresión Lambda en constructor del delegate
+            Console.WriteLine(calculo(3, 4)); // 12
+            calculo = new calcularCosas((n1, n2) => Math.Pow(n1, n2)); // Se cambia Lambda del delegate 
+            Console.WriteLine(calculo(3, 3)); // 27
+
+            List<int> numeros = new List<int>() { 1, 2, 3, 44, 5, 6, 6, 5, };
+            List<int> numerosPrimos = numeros.FindAll(n => {    // Uso de metodo findAll con expresión Lambda en lugar de un Predicated
+                int contador = 0;
+                for (int i = 1; i <= n; i++)
+                {
+                    if (n % i == 0) contador++;
+                }
+                if (contador == 2 || n == 1) return true;
+                return false;
+            });
+
+            foreach (int numero in numerosPrimos) Console.WriteLine(numero);
+
+            List<Trabajador> listaDevs = new List<Trabajador>() {
+                new BackEnd("lucas", 19, 500, 2),
+                new BackEnd("lucas2", 23, 1500000, 4),
+                new BackEnd("lucas3", 25, 1500, 8),
+                new FrontEnd("lucas4", 25, 1500000, "vue js"),
+                new FrontEnd("lucas5", 25, 1508, "angular"),
+                new FrontEnd("lucas6", 25, 3500000, "react js")
+            };
+
+            List<Trabajador> devsExperimentados = listaDevs.FindAll(trabajador => { // Determina trabajadores que ganan mas de 1.000.000 y los guarda en Lista
+                if (trabajador.Sueldo >= 1000000) return true;
+                return false;
+            });
+
+            Console.WriteLine("Lista de trabajadores que cumplen con el predicado de ganar mas de 1.000.000: ");
+
+            int cantidad = 0;
+            foreach (Trabajador dev in devsExperimentados)
+            {
+                Console.WriteLine("{0}, pertenece a {1}, tiene un salario de {2} y su id de trabajador es {3}", dev.Nombre, dev.GetType(), dev.Sueldo, dev.Identificador);
+                cantidad++;
+            }
+            Console.WriteLine("En total son {0} ingenieros", cantidad);
         }
     }
 }

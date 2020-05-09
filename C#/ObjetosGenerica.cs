@@ -15,7 +15,7 @@ namespace Clases
             almacenObjetos = new T[cantidadElementos];
         }
 
-        public void agregarElemento(T objetoAgregar)
+        public void AgregarElemento(T objetoAgregar)
         {
             almacenObjetos[i] = objetoAgregar;
             Console.WriteLine("Elemento agregado en el indice " + i + " clase: " + objetoAgregar.GetType());
