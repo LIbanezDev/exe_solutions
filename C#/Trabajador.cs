@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Clases
 {
-    abstract class Trabajador : IAboutYou
+    public abstract class Trabajador : IAboutYou
     {
         public int Edad { get; }
         public int Sueldo { get; }
@@ -23,7 +23,7 @@ namespace Clases
 
         public abstract override string ToString();
         public override int GetHashCode() => Identificador;
-
+    
     }
     class FrontEnd : Trabajador
     {
