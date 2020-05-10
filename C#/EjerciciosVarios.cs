@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Clases
 {
@@ -233,8 +234,8 @@ namespace Clases
         {
             calcularCosas calculo = new calcularCosas((n1, n2) => n1 * n2); // Se usa expresión Lambda en constructor del delegate
             Console.WriteLine(calculo(3, 4)); // 12
-            calculo = new calcularCosas((n1, n2) => Math.Pow(n1, n2)); // Se cambia Lambda del delegate 
-            Console.WriteLine(calculo(3, 3)); // 27
+            calculo = (n1, n2) => Math.Pow(n1, n2); // Se cambia Lambda del delegate 
+            Console.WriteLine(calculo(3.3, 3.5)); // 27
 
             List<int> numeros = new List<int>() { 1, 2, 3, 44, 5, 6, 6, 5, };
             List<int> numerosPrimos = numeros.FindAll(n => {    // Uso de metodo findAll con expresión Lambda en lugar de un Predicated
@@ -257,21 +258,103 @@ namespace Clases
                 new FrontEnd("lucas5", 25, 1508, "angular"),
                 new FrontEnd("lucas6", 25, 3500000, "react js")
             };
-
-            List<Trabajador> devsExperimentados = listaDevs.FindAll(trabajador => { // Determina trabajadores que ganan mas de 1.000.000 y los guarda en Lista
+            Predicate<Trabajador> condicion = new Predicate<Trabajador>(trabajador => 
+            { 
                 if (trabajador.Sueldo >= 1000000) return true;
                 return false;
             });
 
+            List<Trabajador> devsExperimentados = listaDevs.FindAll(condicion); // Determina trabajadores que ganan mas de 1.000.000
             Console.WriteLine("Lista de trabajadores que cumplen con el predicado de ganar mas de 1.000.000: ");
-
+            
             int cantidad = 0;
             foreach (Trabajador dev in devsExperimentados)
             {
-                Console.WriteLine("{0}, pertenece a {1}, tiene un salario de {2} y su id de trabajador es {3}", dev.Nombre, dev.GetType(), dev.Sueldo, dev.Identificador);
+                Console.WriteLine();
                 cantidad++;
             }
             Console.WriteLine("En total son {0} ingenieros", cantidad);
+
+
+            // Se usara diccionario para almacenar en formato [nombre => edad] los mayores a 25 en la listaDevs.
+            Dictionary<string, int> mayoresDeVeinteYCinco = new Dictionary<string, int>();
+            foreach(Trabajador dev in listaDevs)
+            {
+                if(dev.Edad >= 25)
+                {
+                    mayoresDeVeinteYCinco.Add(dev.Nombre, dev.Edad);
+                }
+            }
+            Console.WriteLine("Mayores de 25: ");
+            foreach(KeyValuePair<string, int> key in mayoresDeVeinteYCinco)
+            {
+                Console.WriteLine("{0} con {1} años", key.Key, key.Value);
+            }
+
+            
+        }
+        public static void ExpresionesRegulares()
+        {
+            // Define a regular expression for repeated words.
+            Regex rx = new Regex(@"\b(?<word>\w+)\s+(\k<word>)\b",
+              RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+            // Define a test string.
+            string text = "The the quick brown fox  fox jumps over the lazy dog dog.";
+
+            // Find matches.
+            MatchCollection matches = rx.Matches(text);
+
+            // Report the number of matches found.
+            Console.WriteLine("{0} matches found in:\n   {1}",
+                              matches.Count,
+                              text);
+
+            // Report on each match.
+            foreach (Match match in matches)
+            {
+                GroupCollection groups = match.Groups;
+                Console.WriteLine("'{0}' repeated at positions {1} and {2}",
+                                  groups["word"].Value,
+                                  groups[0].Index,
+                                  groups[1].Index);
+            }
+        }
+        public static void EsPotenciaONo()
+        {
+            int numeroIngresado = Int32.Parse(Console.ReadLine());
+            int exponente = 0;
+            double valorPotencia;
+            bool esPotencia;
+            while (true)
+            {
+                valorPotencia = Math.Pow(3, exponente);
+                if (valorPotencia > numeroIngresado)
+                {
+                    esPotencia = false;
+                    break;
+                }
+                if (valorPotencia == numeroIngresado)
+                {
+                    esPotencia = true;
+                    break;
+                }
+                exponente++;
+            }
+            if (esPotencia)
+            {
+                Console.WriteLine("Es potencia.");
+                exponente = 0;
+                while (Math.Pow(3, exponente) <= numeroIngresado)
+                {
+                    Console.WriteLine("3 ** {0}: {1}", exponente, Math.Pow(3, exponente));
+                    exponente++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No es potencia");
+            }
         }
     }
 }
