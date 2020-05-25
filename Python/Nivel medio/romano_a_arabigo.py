@@ -12,6 +12,6 @@ def romano_a_arabigo(romano):
       total_acumulado += k_value.get(romano[i]) 
   return total_acumulado + k_value.get(romano[longitud_numero-1])
 
-romano = 'CCCIII'
+romano = 'MMDLC'
 print("El numero romano convertido a arabigo es:",romano_a_arabigo(romano))
 

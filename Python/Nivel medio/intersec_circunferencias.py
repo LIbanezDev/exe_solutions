@@ -1,7 +1,6 @@
-"""
-http://progra.usm.cl/apunte/ejercicios/1/interseccion-circunferencias.html
 
-"""
+# http://progra.usm.cl/apunte/ejercicios/1/interseccion-circunferencias.html
+
 import math
 
 print("Circunferencia 1")

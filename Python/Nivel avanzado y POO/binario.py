@@ -1,7 +1,6 @@
-"""
-http://progra.usm.cl/apunte/ejercicios/3/transmision-datos.html
 
-"""
+# http://progra.usm.cl/apunte/ejercicios/3/transmision-datos.html
+
 
 def binarioToDecimal(binario):  # Punto 1
     longitud = len(binario)

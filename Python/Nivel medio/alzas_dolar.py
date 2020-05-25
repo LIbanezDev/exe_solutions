@@ -1,7 +1,5 @@
-"""
-http://progra.usm.cl/apunte/ejercicios/1/alzas-dolar.html
 
-"""
+# http://progra.usm.cl/apunte/ejercicios/1/alzas-dolar.html
 
 dias = int(input("Dias a contabilizar: "))
 

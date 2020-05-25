@@ -1,7 +1,5 @@
-"""
-http://progra.usm.cl/apunte/ejercicios/1/maquina-alimentos.html
 
-"""
+# http://progra.usm.cl/apunte/ejercicios/1/maquina-alimentos.html
 
 productoComprado = input("Ingrese producto a comprar: ")
 

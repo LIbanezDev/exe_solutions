@@ -1,7 +1,5 @@
-"""
-http://progra.usm.cl/apunte/ejercicios/3/series-de-tiempo.html
 
-"""
+# http://progra.usm.cl/apunte/ejercicios/3/series-de-tiempo.html
 
 def mediasMoviles(serie, valoresConsecutivos):
     mediasMoviles = []

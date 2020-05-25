@@ -1,8 +1,5 @@
-"""
 
-http://progra.usm.cl/apunte/ejercicios/2/modulo-listas.html
-
-"""
+# http://progra.usm.cl/apunte/ejercicios/2/modulo-listas.html
 
 def promedio(lista):
   suma_total = 0
