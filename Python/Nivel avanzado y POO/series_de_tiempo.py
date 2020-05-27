@@ -17,5 +17,5 @@ def diferenciasFinitas(serie):
     return diferenciasFinitas    
 
 serie = [5,2,2,8,-4,-1,2]
-print(mediasMoviles(serie))
+print(mediasMoviles(serie, 2))
 print(diferenciasFinitas(serie))

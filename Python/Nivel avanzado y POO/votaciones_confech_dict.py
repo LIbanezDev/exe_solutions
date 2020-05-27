@@ -1,6 +1,6 @@
 
 # http://progra.usm.cl/apunte/ejercicios/1/votaciones-confech.html
-
+print("Bienvenido al gestor de votaciones CONFECH para las propuestas.")
 cantidad_univ = int(input("Cantidad de universidades:"))
 universidad_votos = {} 
 estado_us = [0,0,0]  #[0] = Ues. que aceptaron, [1] = Ues. que rechazaron, [2] = Ues. que empataron
@@ -22,5 +22,6 @@ for i in range(cantidad_univ):
         estado_us[1] += 1
     else:
         estado_us[2] += 1
+
 print("Universidades que aceptaron:",estado_us[0],", rechazaron:",estado_us[1],", empataron:", estado_us[2])
 
