@@ -1,7 +1,7 @@
 
 # http://progra.usm.cl/apunte/ejercicios/1/maquina-alimentos.html
 
-productoComprado = input("Ingrese producto a comprar: ")
+productoComprado = input("Ingrese producto a comprar('A', 'B' o 'C'): ")
 
 if productoComprado == 'A':    
     precioProductoComprado = 270
@@ -21,6 +21,7 @@ while(montoIntroducido < precioProductoComprado):
 if(montoIntroducido == precioProductoComprado):
     print("No hay vuelto :)")   
 else:
+    print('Su vuelto es: ')
     vuelto = montoIntroducido - precioProductoComprado
     while(vuelto > 0):
         if vuelto / 100 >= 1:
@@ -31,6 +32,5 @@ else:
             print("50")
         else:
             vuelto -= 10
-            print("10")
-    
+            print("10")    
 

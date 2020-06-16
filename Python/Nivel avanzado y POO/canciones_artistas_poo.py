@@ -44,7 +44,7 @@ else:
 cancion = Cancion("lucas","yo")
 canciones.append(cancion)
 canciones.pop(len(canciones) - 2)
-  
+
 n = 1
 for i in canciones:
     print("Cancion numero",n,", Nombre:",i.getNombre(),", Artista:",i.getArtista())  

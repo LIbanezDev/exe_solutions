@@ -15,8 +15,7 @@ def binarioToDecimal(binario):  # Punto 1
 def bloqueValido(corrienteBinaria): # Punto 2
     if len(corrienteBinaria) % 4 != 0:
         return False
-    else:
-        return True
+    return True
 
 def decodificarCorrienteBinaria(corrienteBinaria): # Punto 3
     corrienteDecodificada = []
@@ -43,6 +42,8 @@ def decodificarCorrienteBinaria(corrienteBinaria): # Punto 3
 corriente = [0,1,0,1,0,0,0,1,1]
 
 print(decodificarCorrienteBinaria(corriente))
+print(bloqueValido(corriente))
+print(binarioToDecimal(corriente))
 
 
 

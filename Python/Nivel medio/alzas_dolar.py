@@ -20,15 +20,5 @@ for i in range(1, dias+1):
 if(alzaMayor == 0):
     print("No hubo alzas")
 else:
-    print("Alza mayor:", round(alzaMayor, 2))
-
-
-
-
-    
-    
-
-
-    
-    
+    print("Alza mayor:", round(alzaMayor, 2))    
 
