@@ -7,6 +7,6 @@
  </p>
  </main>
  <footer>
-Como aprendizaje principal considero que utilizar un lenguaje como Java para la solución de problemas le entrega al desarrollador una manera de estructurar el pensamiento radicalmente distinta a la de javascript, siendo este último demasiado "permisivo" en cuanto a sus funcionaliades, lo cual se traducía en que muchas veces el error se hacia notar en tiempo de ejecución y no de desarrollo. Por otro lado, en Java me sorprendió el orden que se tiene al tener un intérprete constantemente analizando el código que escribes y evitando que los errores salgan a producción, lo cual en un entorno de backend seria catastrófico, por lo que mi enfoque de aquí en adelante será un tipo de "híbrido" el cuál aproveche las bondades tanto de un lenguaje como javascript como de java.   
-   
+Como aprendizaje principal considero que utilizar un lenguaje como Java para la solución de problemas le entrega al desarrollador una manera de estructurar el pensamiento radicalmente distinta a la de javascript, siendo este último demasiado "permisivo" en cuanto a sus funcionaliades, lo cual se traducía en que muchas veces el error se hacia notar en tiempo de ejecución y no de desarrollo. <hr/> 
+En Java me gusta el orden que se tiene al desarrollar ya que se tiene un intérprete constantemente analizando el código que escribes y evitando (siempre y cuando la lógica de negocio esté bien aplicada) que los errores salgan a producción, lo cual en un entorno de backend seria catastrófico, por lo que mi enfoque de aquí en adelante será un tipo de "híbrido" el cuál aproveche las bondades tanto de un lenguaje como javascript como de java.   
  </footer>
